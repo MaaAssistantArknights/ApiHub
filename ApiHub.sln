@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DD2BFB2C-6E2E-42AE-B55F-9C225D5EBE23}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+		Directory.Packages.props = Directory.Packages.props
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiHub.Api", "src\ApiHub.Api\ApiHub.Api.csproj", "{BC332B3C-C2D8-48D6-9674-89E5E3E5AC99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiHub.Shared", "src\ApiHub.Shared\ApiHub.Shared.csproj", "{DBA986BC-9880-481F-8A82-62EDB2F66237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiHub.Web", "src\ApiHub.Web\ApiHub.Web.csproj", "{F6ED7259-A226-4F83-9F80-263CF6FAF36B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC332B3C-C2D8-48D6-9674-89E5E3E5AC99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC332B3C-C2D8-48D6-9674-89E5E3E5AC99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC332B3C-C2D8-48D6-9674-89E5E3E5AC99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC332B3C-C2D8-48D6-9674-89E5E3E5AC99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA986BC-9880-481F-8A82-62EDB2F66237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA986BC-9880-481F-8A82-62EDB2F66237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA986BC-9880-481F-8A82-62EDB2F66237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA986BC-9880-481F-8A82-62EDB2F66237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6ED7259-A226-4F83-9F80-263CF6FAF36B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6ED7259-A226-4F83-9F80-263CF6FAF36B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6ED7259-A226-4F83-9F80-263CF6FAF36B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6ED7259-A226-4F83-9F80-263CF6FAF36B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
