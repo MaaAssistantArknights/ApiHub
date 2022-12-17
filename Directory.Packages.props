@@ -4,6 +4,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Com.Ctrip.Framework.Apollo.Configuration" Version="2.9.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
     <PackageVersion Include="MinVer" Version="4.2.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.1" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.1" />

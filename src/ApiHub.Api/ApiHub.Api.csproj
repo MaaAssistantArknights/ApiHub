@@ -2,10 +2,14 @@
   
     <ItemGroup>
         <ProjectReference Include="..\ApiHub.Shared\ApiHub.Shared.csproj" />
+        <ProjectReference Include="..\ApiHub.Web\ApiHub.Web.csproj" />
     </ItemGroup>
   
     <ItemGroup>
       <PackageReference Include="Com.Ctrip.Framework.Apollo.Configuration" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" />
       <PackageReference Include="Serilog.AspNetCore" />
       <PackageReference Include="Serilog.Enrichers.Thread" />
     </ItemGroup>
