@@ -11,9 +11,15 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped<HttpClient>(_ => new HttpClient
+builder.Services.AddScoped<HttpClient>(_ =>
 {
-    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress + "api/v1/")
+    var handler = new HttpClientHandler();
+    handler.AllowAutoRedirect = false;
+    
+    return new HttpClient(handler)
+    {
+        BaseAddress = new Uri(builder.HostEnvironment.BaseAddress + "api/v1/")
+    };
 });
 
 builder.Services.AddScoped<ContextMenuService>();
