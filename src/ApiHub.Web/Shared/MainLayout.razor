@@ -3,9 +3,14 @@
 <main>
     <RadzenLayout class="rz-shadow-3">
         <RadzenHeader>
-            <div class="d-flex align-items-center">
-                <RadzenSidebarToggle Click="@(() => _sidebarStatus = !_sidebarStatus)"/>
-                <RadzenLabel Text="ApiHub"/>
+            <div class="row justify-content-start align-items-center">
+                <div class="col-5 d-flex align-items-center">
+                    <RadzenSidebarToggle Click="@(() => _sidebarStatus = !_sidebarStatus)"/>
+                    <RadzenLabel Text="ApiHub" Style="font-weight: 800; font-size: 26px;"/>
+                </div>
+                <div class="col-7 d-flex align-items-center justify-content-end">
+                    <LoginButton Class="mx-2" />
+                </div>
             </div>
         </RadzenHeader>
         <RadzenSidebar @bind-Expanded="@_sidebarStatus">
@@ -22,6 +27,8 @@
             The Footer
         </RadzenFooter>
     </RadzenLayout>
+    
+    <RadzenDialog />
 </main>
 
 @code{

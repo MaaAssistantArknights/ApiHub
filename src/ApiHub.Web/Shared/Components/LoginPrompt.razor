@@ -1,0 +1,55 @@
+<RadzenTemplateForm class="mx-4 my-2" TItem="ApiLoginModel" Data="@_model" Submit="@OnLogin">
+    <p class="row">
+        <RadzenLabel class="col-3" Component="Username" Text="Username" />
+        <RadzenTextBox class="col-9" Name="Username" @bind-value="@_model.Username" />
+        <RadzenRequiredValidator Component="Username" Text="Username is required!" />
+    </p>
+    <p class="row">
+        <RadzenLabel class="col-3" Component="Password" Text="Password" />
+        <RadzenPassword class="col-9" Name="Password" @bind-value="@_model.Password" />
+        <RadzenRequiredValidator Component="Password" Text="Password is required!" />
+    </p>
+    <p class="row">
+        <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Text="Login" />
+    </p>
+    @if (_ssoEnabled)
+    {
+        <p class="row">
+            <RadzenButton ButtonStyle="ButtonStyle.Secondary" Text="@SsoDisplayName" Click="@OnLoginWithSSO" />
+        </p>
+    }
+</RadzenTemplateForm>
+
+@code {
+
+    private record ApiLoginModel
+    {
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+
+    private readonly ApiLoginModel _model = new();
+    
+    private bool _ssoEnabled;
+    private string _ssoName = "SSO";
+    private string SsoDisplayName => $"Login with {_ssoName}";
+    
+    protected override Task OnInitializedAsync()
+    {
+        _ssoEnabled = true;
+        _ssoName = "MAA Team";
+        
+        return base.OnInitializedAsync();
+    }
+    
+    private Task OnLogin(ApiLoginModel model)
+    {
+        Console.WriteLine($"Username: {model.Username}; Password: {model.Password}");
+        return Task.CompletedTask;
+    }
+
+    private Task OnLoginWithSSO()
+    {
+        return Task.CompletedTask;
+    }
+}

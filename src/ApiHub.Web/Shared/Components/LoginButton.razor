@@ -1,0 +1,30 @@
+@inject DialogService DialogService
+
+<RadzenButton
+    class="@Class"
+    Click="@OpenLoginPrompt"
+    Icon="account_circle" 
+    Text="Login" 
+    Variant="Variant.Outlined" 
+    ButtonStyle="ButtonStyle.Info" 
+    Size="ButtonSize.Small" />
+
+@code {
+
+    [Parameter]
+    public string Class { get; set; } = string.Empty;
+    
+    private async Task OpenLoginPrompt()
+    {
+        await DialogService.OpenAsync<LoginPrompt>(
+            "Login", 
+            new Dictionary<string, object>(),
+            new DialogOptions
+            {
+                Width = "560px",
+                Height = "340px",
+                Resizable = false,
+                Draggable = false
+            });
+    }
+}
