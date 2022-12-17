@@ -23,7 +23,12 @@
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7225;http://localhost:5213",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "APOLLO_APP_ID": "api-hub-dev",
+        "APOLLO_META_SERVER": "http://localhost:8080/",
+        "APOLLO_CLUSTER": "local-dev",
+        "APOLLO_NAMESPACES": "appsettings.json",
+        "APOLLO_ENV": "DEV"
       }
     },
     "IIS Express": {

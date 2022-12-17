@@ -3,5 +3,11 @@
     <ItemGroup>
         <ProjectReference Include="..\ApiHub.Shared\ApiHub.Shared.csproj" />
     </ItemGroup>
+  
+    <ItemGroup>
+      <PackageReference Include="Com.Ctrip.Framework.Apollo.Configuration" />
+      <PackageReference Include="Serilog.AspNetCore" />
+      <PackageReference Include="Serilog.Enrichers.Thread" />
+    </ItemGroup>
 
 </Project>
