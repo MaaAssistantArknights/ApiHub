@@ -13,10 +13,9 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped<HttpClient>(_ => new HttpClient
 {
-    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress + "api/v1/")
 });
 
-builder.Services.AddScoped<NotificationService>();
-builder.Services.AddScoped<DialogService>();
+builder.Services.AddScoped<ContextMenuService>();
 
 await builder.Build().RunAsync();

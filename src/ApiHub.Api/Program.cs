@@ -22,17 +22,28 @@ builder.Host.UseSerilog();
 
 builder.Services.AddCors();
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddApiVersioning(o =>
 {
-    o.DefaultApiVersion = new ApiVersion(1, 0);
+    o.DefaultApiVersion = ApiVersion.Parse("1");
     o.AssumeDefaultVersionWhenUnspecified = true;
 });
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders = ForwardedHeaders.All;
 });
+builder.Services.AddAuthentication(configuration);
 
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseWebAssemblyDebugging();
+}
+else
+{
+    app.UseHsts();
+}
 
 app.UseForwardedHeaders();
 app.UseCors(options =>
@@ -45,6 +56,12 @@ app.UseCors(options =>
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
+
+app.UseRouting();
+app.UseSerilogRequestLogging();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 app.MapFallbackToFile("index.html");

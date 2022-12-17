@@ -28,9 +28,7 @@
         "APOLLO_META_SERVER": "http://localhost:8080/",
         "APOLLO_CLUSTER": "local-dev",
         "APOLLO_NAMESPACES": "appsettings.json",
-        "APOLLO_ENV": "DEV",
-        "EMBEDDED_USER_NAME": "admin",
-        "EMBEDDED_USER_SECRET": "password"
+        "APOLLO_ENV": "DEV"
       }
     },
     "IIS Express": {
