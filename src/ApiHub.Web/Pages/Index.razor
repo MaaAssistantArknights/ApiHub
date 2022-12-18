@@ -1,22 +1,3 @@
 @page "/"
-@inject HttpClient HttpClient;
 
-<RadzenText TextStyle="TextStyle.H1">@Text</RadzenText>
-
-<RadzenButton Text="Refresh" Click="@Refresh"></RadzenButton>
-
-@code {
-
-    private string Text { get; set; } = "Text";
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await Refresh();
-    }
-
-    private async Task Refresh()
-    {
-        var response = await HttpClient.GetStringAsync("auth/username");
-        Text = response;
-    }
-}
+<RadzenText TextStyle="TextStyle.H1">Hello World!</RadzenText>

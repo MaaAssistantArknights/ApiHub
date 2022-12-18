@@ -2,12 +2,13 @@
 // ApiHub belongs to the MAA organization.
 // Licensed under the AGPL-3.0 license.
 
-using ApiHub.Shared.Extensions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ApiHub.Server;
+namespace ApiHub.Server.Extensions;
 
 public static class ServiceExtension
 {
@@ -24,22 +25,9 @@ public static class ServiceExtension
             {
                 var configSection = configuration.GetSection("Auth:OIDC:Config");
 
-                var serverAddress = configSection
-                    .GetValue("ServerAddress", string.Empty).NotNull();
-                var metadataAddress = configSection
-                    .GetValue("MetadataAddress", string.Empty).NotNull();
-                        
-                var clientId = configSection
-                    .GetValue("ClientId", string.Empty).NotNull();
-                var clientSecret = configSection
-                    .GetValue("ClientSecret", string.Empty).NotNull();
-                        
                 var scope = configSection.GetValue<string>("Scope")?
                                 .Split(' ', StringSplitOptions.RemoveEmptyEntries)
                             ?? new [] { "profile", "email", "openid" };
-                
-                var roleClaim = configSection.GetValue("RolesClaim", "roles").NotNull();
-                var usernameClaim = configSection.GetValue("UsernameClaim", "preferred_username").NotNull();
                 
                 c.Scope.Clear();
                 foreach (var s in scope)
@@ -47,18 +35,35 @@ public static class ServiceExtension
                     c.Scope.Add(s);
                 }
                 
-                c.Authority = serverAddress;
-                c.MetadataAddress = metadataAddress;
-                c.ClientId = clientId;
-                c.ClientSecret = clientSecret;
                 c.CallbackPath = "/oidc-callback";
                 c.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 c.GetClaimsFromUserInfoEndpoint = true;
                 c.TokenValidationParameters = new TokenValidationParameters
                 {
-                    RoleClaimType = roleClaim,
-                    NameClaimType = usernameClaim
+                    RoleClaimType = configSection.GetValue("RolesClaim", "roles"),
+                    NameClaimType = configSection.GetValue("UsernameClaim", "preferred_username")
                 };
+                
+                c.MetadataAddress = configSection.GetValue<string>("MetadataAddress");
+                c.ClientId = configSection.GetValue<string>("ClientId");
+                c.ClientSecret = configSection.GetValue<string>("ClientSecret");
             });
+    }
+
+    public static void AddApiVersion(this IServiceCollection services)
+    {
+        services.AddApiVersioning(o =>
+        {
+            o.DefaultApiVersion = ApiVersion.Parse("1");
+            o.AssumeDefaultVersionWhenUnspecified = true;
+        });
+    }
+    
+    public static void AddForwardedHeaders(this IServiceCollection services)
+    {
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders = ForwardedHeaders.All;
+        });
     }
 }

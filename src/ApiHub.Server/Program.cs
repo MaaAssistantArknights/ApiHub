@@ -3,8 +3,7 @@
 // Licensed under the AGPL-3.0 license.
 
 using ApiHub.Server;
-using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Mvc;
+using ApiHub.Server.Extensions;
 using Serilog;
 using Serilog.Debugging;
 
@@ -23,15 +22,8 @@ builder.Host.UseSerilog();
 builder.Services.AddCors();
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddApiVersioning(o =>
-{
-    o.DefaultApiVersion = ApiVersion.Parse("1");
-    o.AssumeDefaultVersionWhenUnspecified = true;
-});
-builder.Services.Configure<ForwardedHeadersOptions>(options =>
-{
-    options.ForwardedHeaders = ForwardedHeaders.All;
-});
+builder.Services.AddApiVersion();
+builder.Services.AddForwardedHeaders();
 builder.Services.AddAuthentication(configuration);
 
 var app = builder.Build();
@@ -46,13 +38,7 @@ else
 }
 
 app.UseForwardedHeaders();
-app.UseCors(options =>
-{
-    options.SetIsOriginAllowed(_ => true)
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials();
-});
+app.UseAllowCors();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
