@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ApiHub.Api.Controllers;
+namespace ApiHub.Server.Controllers;
 
 [ApiController]
 [ApiVersion("1")]

@@ -7,7 +7,7 @@ using Com.Ctrip.Framework.Apollo.Enums;
 using Serilog;
 using ILogger = Serilog.ILogger;
 
-namespace ApiHub.Api;
+namespace ApiHub.Server;
 
 public static class Initializer
 {

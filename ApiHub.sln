@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiHub.Api", "src\ApiHub.Api\ApiHub.Api.csproj", "{BC332B3C-C2D8-48D6-9674-89E5E3E5AC99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiHub.Server", "src\ApiHub.Server\ApiHub.Server.csproj", "{BC332B3C-C2D8-48D6-9674-89E5E3E5AC99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiHub.Shared", "src\ApiHub.Shared\ApiHub.Shared.csproj", "{DBA986BC-9880-481F-8A82-62EDB2F66237}"
 EndProject

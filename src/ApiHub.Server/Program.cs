@@ -2,7 +2,7 @@
 // ApiHub belongs to the MAA organization.
 // Licensed under the AGPL-3.0 license.
 
-using ApiHub.Api;
+using ApiHub.Server;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;

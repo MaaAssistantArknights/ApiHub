@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ApiHub.Api;
+namespace ApiHub.Server;
 
 public static class ServiceExtension
 {
